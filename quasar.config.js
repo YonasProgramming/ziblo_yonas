@@ -163,10 +163,7 @@ htmlVariables: {
       // noIosLegacyBuildFlag: true, // uncomment only if you know what you are doing
     },
 
-    // Full list of options: https://v2.quasar.dev/quasar-cli-webpack/developing-capacitor-apps/configuring-capacitor
-    capacitor: {
-      hideSplashscreen: true
-    },
+
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-webpack/developing-electron-apps/configuring-electron
     electron: {
@@ -199,7 +196,7 @@ htmlVariables: {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'com.dikobraz.novamoba'
+        appId: 'org.ziblo.dikobraz.com'
       }
     },
 

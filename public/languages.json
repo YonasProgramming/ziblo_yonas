@@ -6,7 +6,8 @@
         "en": "English",
         "hr": "Engleski",
         "es": "Inglés",
-        "fr": "Anglais"
+        "fr": "Anglais",
+        "de": "Englisch"
       }
     },
     {
@@ -15,7 +16,8 @@
         "en": "Croatian",
         "hr": "Hrvatski",
         "es": "Croata",
-        "fr": "Croate"
+        "fr": "Croate",
+        "de": "Kroatisch"
       }
     },
     {
@@ -24,7 +26,8 @@
         "en": "Spanish",
         "hr": "Španjolski",
         "es": "Español",
-        "fr": "Espagnol"
+        "fr": "Espagnol",
+        "de": "Spanisch"
       }
     },
     {
@@ -33,7 +36,18 @@
         "en": "French",
         "hr": "Francuski",
         "es": "Francés",
-        "fr": "Français"
+        "fr": "Français",
+        "de": "Französisch"
+      }
+    },
+    {
+      "code": "de",
+      "labels": {
+        "en": "German",
+        "hr": "Njemački",
+        "es": "Alemán",
+        "fr": "Allemand",
+        "de": "Deutsch"
       }
     }
   ]

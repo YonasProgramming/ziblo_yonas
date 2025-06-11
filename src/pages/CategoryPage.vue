@@ -1,20 +1,40 @@
 <template>
   <q-page class="q-pa-md bg-grey-2">
-    <q-btn flat icon="arrow_back" @click="$router.back()" class="q-mb-md" />
+    <q-btn flat icon="arrow_back" @click="$router.push('/category-all')" class="q-mb-md q-pa-md" />
 
-    <div class="text-h5 q-mb-md">{{ categoryName }}</div>
+    <div class="text-h5 q-mb-md" >
+      {{ categoryName }}
+    </div>
+<q-input
+  standout="bg-primary text-white"
+  rounded
+  v-model="searchQuery"
+  :label="$t('Search symbols')"
+  class="q-mb-md"
+  clearable
+  debounce="300"
+  >
+    <template #prepend>
+      <q-icon name="search" />
+    </template>
+  </q-input>
 
     <div class="pojam-list">
       <q-card
         v-for="pojam in pojmovi"
         :key="pojam.id"
         clickable
-        @click="goToPojam(pojam.id)"
-        class="pojam-card"
+        @click="goToPojam(pojam)"
+        class="pojam-card q-pb-xl"
+         :style="{ backgroundColor: pojam.category.color ? pojam.category.color + '80' : '#fff' }"
       >
-        <q-img :src="`/src/assets/${pojam.image || 'default.svg'}`" style="height: 140px" />
+        <q-img
+          :src="`/symbols/${pojam.image || 'default.svg'}`"
+          style="height: 130px"
+          fit="contain"
+        />
         <div class="pojam-name">
-          {{ pojam.translations.hr.title }}
+          {{ translatedTitle(pojam).value }}
         </div>
       </q-card>
     </div>
@@ -22,193 +42,52 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted,watch,computed   } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-
+import rawData from 'src/assets/symbols_data.json'
+import { useI18n } from 'vue-i18n'
 const route = useRoute()
 const router = useRouter()
 const categoryId = Number(route.params.id)
 
-const categoriesData = {
-  1: { name: 'Ljudi i tijelo' },
-}
-// Samo test - ovo obrisi- cupaj iz jsona
-const pojmoviData = {
-  1: [
-        {
-      id: 1,
-      name: "head",
-      image: "head.svg",
-      translations: { hr: { title: "Glava" } }
-    },
-    {
-      id: 2,
-      name: "eye",
-      image: "eye.svg",
-      translations: { hr: { title: "Oko" } }
-    },
-    {
-      id: 3,
-      name: "hair",
-      image: "hair.svg",
-      translations: { hr: { title: "Kosa" } }
-    },
-    {
-      id: 4,
-      name: "eye_brow",
-      image: "eye_brow.svg",
-      translations: { hr: { title: "Obrva" } }
-    },
-    {
-      id: 5,
-      name: "ear",
-      image: "ear.svg",
-      translations: { hr: { title: "Uho" } }
-    },
-    {
-      id: 6,
-      name: "mouth",
-      image: "mouth.svg",
-      translations: { hr: { title: "Usta" } }
-    },
-    {
-      id: 7,
-      name: "nose",
-      image: "nose.svg",
-      translations: { hr: { title: "Nos" } }
-    },
-    {
-      id: 8,
-      name: "teeth",
-      image: "teeth.svg",
-      translations: { hr: { title: "Zubi" } }
-    },
-    {
-      id: 9,
-      name: "tongue",
-      image: "tongue.svg",
-      translations: { hr: { title: "Jezik" } }
-    },
-    {
-      id: 10,
-      name: "neck",
-      image: "neck.svg",
-      translations: { hr: { title: "Vrat" } }
-    },
-    {
-      id: 11,
-      name: "hand",
-      image: "hand.svg",
-      translations: { hr: { title: "Ruka (šaka)" } }
-    },
-    {
-      id: 12,
-      name: "arm",
-      image: "arm.svg",
-      translations: { hr: { title: "Ruka" } }
-    },
-    {
-      id: 14,
-      name: "chest",
-      image: "chest.svg",
-      translations: { hr: { title: "Prsa" } }
-    },
-    {
-      id: 15,
-      name: "stomach",
-      image: "stomach.svg",
-      translations: { hr: { title: "Trbuh" } }
-    },
-    {
-      id: 16,
-      name: "back",
-      image: "back.svg",
-      translations: { hr: { title: "Leđa" } }
-    },
-    {
-      id: 17,
-      name: "waist",
-      image: "waist.svg",
-      translations: { hr: { title: "Struk" } }
-    },
-    {
-      id: 18,
-      name: "buttocks",
-      image: "buttocks.svg",
-      translations: { hr: { title: "Stražnjica" } }
-    },
-    {
-      id: 19,
-      name: "leg",
-      image: "leg.svg",
-      translations: { hr: { title: "Noga" } }
-    },
-    {
-      id: 20,
-      name: "foot",
-      image: "foot.svg",
-      translations: { hr: { title: "Stopalo" } }
-    },
-    {
-      id: 21,
-      name: "knee",
-      image: "knee.svg",
-      translations: { hr: { title: "Koljeno" } }
-    },
-    {
-      id: 22,
-      name: 'leg',
-      image: 'leg.svg',
-      translations: {
-        hr: { title: 'Noga' }
-      }
-    },
-    {
-      id: 23,
-      name: 'foot',
-      image: 'foot.svg',
-      translations: {
-        hr: { title: 'Stopalo' }
-      }
-    },
-    {
-      id: 24,
-      name: 'knee',
-      image: 'knee.svg',
-      translations: {
-        hr: { title: 'Koljeno' }
-      }
-    },
-    {
-      id: 25,
-      name: 'finger',
-      image: 'finger.svg',
-      translations: {
-        hr: { title: 'Prst' }
-      }
-    },
-    {
-      id: 26,
-      name: 'toe',
-      image: 'toe.svg',
-      translations: {
-        hr: { title: 'Prst na nozi' }
-      }
-    },
-    // Samo test - ovo obrisi
-  ],
-}
+const { locale } = useI18n()
 
-const categoryName = ref('')
-const pojmovi = ref([])
-
-onMounted(() => {
-  categoryName.value = categoriesData[categoryId]?.name || 'Nepoznata kategorija'
-  pojmovi.value = pojmoviData[categoryId] || []
+const categoryName = ref('Nepoznata kategorija')
+const categoryColor = ref('#ffffff')
+const allPojmovi = ref([])
+const searchQuery = ref('')
+const pojmovi = computed(() => {
+  if (!searchQuery.value) return allPojmovi.value
+  const q = searchQuery.value.toLowerCase()
+  return allPojmovi.value.filter((item) =>
+    translatedTitle(item).value.toLowerCase().includes(q)
+  )
 })
 
-function goToPojam(pojamId) {
-  router.push(`/pojam/${pojamId}`)
+const translatedTitle = (pojam) =>
+  computed(() => pojam.translations?.[locale.value]?.title || 'Bez naziva')
+function updateCategoryInfo() {
+  if (allPojmovi.value.length > 0) {
+    const cat = pojmovi.value[0].category
+    categoryName.value =
+      cat.translations?.[locale.value]?.title || 'Nepoznata kategorija'
+    categoryColor.value = cat.color || '#ffffff'
+  }
+}
+
+onMounted(() => {
+  allPojmovi.value = rawData.filter((item) => item.category?.id === categoryId)
+  updateCategoryInfo()
+})
+
+// 👇 react to language change
+watch(locale, () => {
+  updateCategoryInfo()
+})
+
+
+function goToPojam(pojam) {
+  router.push(`/pojam/${pojam.category.id}/${pojam.id}`)
 }
 </script>
 

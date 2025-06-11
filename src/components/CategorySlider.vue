@@ -1,16 +1,19 @@
 <template>
   <div class="category-slider">
     <div
-    v-for="category in categories.slice(0, 5)"
+    v-for="category in categories"
       :key="category.id"
       class="category-slide-item"
+      
       @click="goToCategory(category.id)"
     >
       <q-img
-        :src="category.image"
+        :src="`/category_images/${category.image}`"
         class="category-image"
+        fit="contain"
         :alt="category.name"
         style="border-radius: 15px"
+        :style="{ backgroundColor: category.color ? category.color + '80' : '#fff' }"
       />
       <div class="category-name">{{ category.name }}</div>
     </div>

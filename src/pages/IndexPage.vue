@@ -17,9 +17,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted,computed } from 'vue'
 import { useRouter } from 'vue-router'
-
+import { useI18n } from 'vue-i18n'
 import TopHeader from '../components/TopHeader.vue'
 import RandomButton from '../components/RandomButton.vue'
 import FavoritesHeader from '../components/FavoritesHeader.vue'
@@ -28,16 +28,28 @@ import CategoryButtonSlider from '../components/CategoryButtonSlider.vue'
 
 import categoryData from 'src/assets/categories_data.json' 
 const router = useRouter()
-const categories = ref([])
+const { locale } = useI18n()
+const categoriesRaw = ref([])  // store full data
+
 
 onMounted(() => {
-  categories.value = categoryData.map(cat => ({
+  categoriesRaw.value = categoryData.map(cat => ({
     id: cat.id,
-    name: cat.translations.hr || cat.category,
-    image: `/src/assets/${cat.image}`,  //slike
+    name: cat.translations?.[locale.value].title || cat.category,
+    translations: cat.translations,
+    image: cat.image,  //slike
+    color:cat.color
   }))
 })
-
+// Compute categories with reactive names depending on locale
+const categories = computed(() =>
+  categoriesRaw.value.map(cat => ({
+    id: cat.id,
+    name: cat.translations?.[locale.value].title || cat.category,
+    image: cat.image,
+    color:cat.color
+  }))
+)
 function goToRandom() {
   router.push('/random-game')
 }

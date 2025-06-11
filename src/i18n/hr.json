@@ -54,5 +54,20 @@
   "let's_try_another": "Pokušajmo drugi",
   "match": "Spoji",
   "continue": "Nastavi",
-  "contact":"Javite nam se"
+  "contact":"Javite nam se",
+  "address": "Adresa",
+  "or": "ili",
+  "Instructions": "Upute",
+  "Terms": "Uvjeti korištenja",
+  "Search categories": "Pretraži kategorije",
+  "Categories": "Kategorije",
+  "Game": "Igra",
+  "Search symbols": "Pretraži simbole",
+  "email": "E-mail",
+  "see all": "Prikaži sve",
+  "random_selection": "Nasumičan odabir",
+"your_name": "Vaše ime",
+  "email_address": "Email adresa",
+  "your_message": "Vaša poruka",
+  "send_message": "Pošalji poruku"
 }

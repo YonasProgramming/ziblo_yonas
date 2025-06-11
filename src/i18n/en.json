@@ -54,5 +54,21 @@
   "let's_try_another": "Let's try another",
   "match": "Match",
   "continue": "Continue",
-  "contact":"Contact us"
+  "contact":"Contact us",
+  "address":"Address",
+  "or":"or",
+  "Instructions":"Instructions",
+  "Terms":"Terms & Conditions",
+  "Search categories":"Search categories",
+  "Categories":"Categories",
+  "Game":"Game",
+  "Search symbols":"Search symbols",
+  "email": "E-mail",
+  "see all":"See all",
+  "random selection": "Random selection",
+"your_name": "Your Name",
+  "email_address": "Email Address",
+  "your_message": "Your Message",
+  "send_message": "Send Message"
+
 }

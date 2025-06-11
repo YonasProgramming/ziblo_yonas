@@ -1,9 +1,9 @@
 {
-  "name": "com.dikobraz.novamoba",
+  "name": "com.zibla.dikobraz.com",
   "version": "0.0.1",
-  "description": "A Quasar Project",
+  "description": "Ziblo helper",
   "productName": "ZIBLO",
-  "author": "ansafran <safranantonela@gmail.com>",
+  "author": "kvargec <kreso@dikobraz.hr>",
   "private": true,
   "type": "module",
   "scripts": {

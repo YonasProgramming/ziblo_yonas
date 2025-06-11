@@ -1,46 +1,16 @@
 <template>
   <q-layout view="hHh lpR fff">
+<div class="row">
+  
+  <div class="col-12 justify-center items-center text-center">
+    <router-link to="/"> <q-img src="horizontal-logo.png" width="200px" class="q-mt-lg q-mx-auto block"></q-img></router-link>
+  </div>
+</div>
+ 
 
-    <q-btn
-      flat
-      dense
-      round
-      icon="menu"
-      aria-label="Meni"
-      class="hamburger-btn"
-      @click="drawer = !drawer"
-    />
+   
 
-    <q-drawer v-model="drawer" show-if-above side="left" bordered>
-      
-      <q-list padding  class="drawer-content">
-        <q-img src="vertical-logo.png" width="50%" class="q-mx-auto block"></q-img>
- <div class="q-pa-md"><LanguageSwitcher /></div>
-        <h6>{{$t('contact')}}</h6>
-
-        <q-item-label header>Address</q-item-label>
-        <div class="q-pa-md text-body2">
-          Ulica Božidara Magovca 107<br />
-          10000 Zagreb
-        </div>
-
-        <q-separator spaced />
-
-        <q-item-label header>Opening hours</q-item-label>
-        <div class="q-pa-md text-body2">
-          08:00—16:00
-        </div>
-
-        <q-separator spaced />
-
-        <q-item-label header>Email</q-item-label>
-        <div class="q-pa-md text-body2">
-          <a href="mailto:info@dikobraz.hr">info@dikobraz.hr</a>
-        </div>
-      </q-list>
-    </q-drawer>
-
-    <q-page-container>
+    <q-page-container class="q-pb-xl q-mb-lg">
       <router-view />
     </q-page-container>
 
@@ -52,7 +22,7 @@
         aria-label="Home"
       >
         <q-icon name="home" />
-        <span>Početna</span>
+        <span>{{$t('home')}}</span>
       </button>
 
       <button
@@ -62,17 +32,25 @@
         aria-label="Categories"
       >
         <q-icon name="category" />
-        <span>Kategorije</span>
+        <span>{{$t('Categories')}}</span>
       </button>
-
+ <button
+        class="toolbar-btn"
+        :class="{ active: activeTab === 3 }"
+        @click="goTo('/game')"
+        aria-label="game"
+      >
+        <q-icon name="smart_toy" />
+        <span>{{$t('Game')}}</span>
+      </button>
       <button
         class="toolbar-btn"
         :class="{ active: activeTab === 2 }"
-        @click="goTo('/account/1')"
+        @click="goTo('/contact')"
         aria-label="Profile"
       >
         <q-icon name="person" />
-        <span>Profil</span>
+        <span>{{$t('profile')}}</span>
       </button>
     </div>
   </q-layout>
@@ -81,11 +59,11 @@
 <script setup>
 import { ref, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import LanguageSwitcher from 'components/LanguageSwitcher.vue'
+
 const router = useRouter()
 const route = useRoute()
 
-const drawer = ref(false)
+
 const activeTab = ref(0)
 
 const goTo = (path) => {
@@ -101,6 +79,8 @@ watch(
       activeTab.value = 0
     } else if (newPath.startsWith('/account')) {
       activeTab.value = 2
+    }else if (newPath === '/game') {
+      activeTab.value = 3
     } else {
       activeTab.value = -1
     }

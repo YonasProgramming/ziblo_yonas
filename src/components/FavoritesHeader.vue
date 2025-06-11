@@ -1,11 +1,11 @@
 <template>
   <div class="favorites-header row items-center justify-between q-mb-md">
-    <div class="text-h6 text-weight-bold">Favoriti</div>
+    <div class="text-h6 text-weight-bold">{{$t('Categories')}}</div>
     <div
       class="view-all cursor-pointer text-dark"
       @click="$emit('view-all')"
     >
-      <span>Pogledaj sve</span>
+      <span>{{$t('see all')}}</span>
       <q-icon name="keyboard_arrow_right" size="24px" />
     </div>
   </div>

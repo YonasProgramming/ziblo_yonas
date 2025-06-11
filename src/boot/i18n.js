@@ -3,11 +3,22 @@ import messages from 'src/i18n';
 import { boot } from 'quasar/wrappers';
 
 export default boot(({ app }) => {
+  const availableLocales = Object.keys(messages);
+  const savedLocale = localStorage.getItem('appLocale');
+
+  const systemLocale = navigator.language.split('-')[0].toLowerCase();
+  const selectedLocale =
+    availableLocales.includes(savedLocale)
+      ? savedLocale
+      : availableLocales.includes(systemLocale)
+        ? systemLocale
+        : 'en';
+
   const i18n = createI18n({
-    locale: 'en', // default
-    fallbackLocale: 'en',
-    legacy: false, // needed for Composition API
+    legacy: false,
     globalInjection: true,
+    locale: selectedLocale,
+    fallbackLocale: 'en',
     messages
   });
 

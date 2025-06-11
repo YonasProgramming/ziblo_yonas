@@ -54,5 +54,20 @@
   "let's_try_another": "Probemos otro",
   "match": "Emparejar",
   "continue": "Continuar",
-  "contact":"Contáctanos"
+  "contact":"Contáctanos",
+  "address": "Dirección",
+  "or": "o",
+  "Instructions": "Instrucciones",
+  "Terms": "Términos y condiciones",
+  "Search categories": "Buscar categorías",
+  "Categories": "Categorías",
+  "Game": "Juego",
+  "Search symbols": "Buscar símbolos",
+  "email": "Correo electrónico",
+  "see all": "Ver todo",
+  "random selection": "Selección aleatoria",
+  "your_name": "Tu nombre",
+  "email_address": "Dirección de correo",
+  "your_message": "Tu mensaje",
+  "send_message": "Enviar mensaje"
 }

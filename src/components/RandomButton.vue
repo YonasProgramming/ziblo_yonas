@@ -1,11 +1,12 @@
 <template>
   <div class="random-btn-wrapper">
     <q-btn
-      label="Nasumičan odabir"
+      :label="$t('random selection')"
       class="random-btn"
       rounded
       unelevated
-      color="purple"
+      color="primary"
+      text-color="dark"
       @click="$emit('random-click')"
     />
   </div>

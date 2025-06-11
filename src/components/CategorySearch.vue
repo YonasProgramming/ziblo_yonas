@@ -2,12 +2,13 @@
   <q-input
     :model-value="modelValue"
     @update:model-value="updateValue"
-    outlined
-    dense
+   standout="bg-primary text-white"
+   rounded
+    clearable
     debounce="300"
-    placeholder="Pretraži kategorije..."
-    class="q-my-md"
-    style="max-width: 900px; margin: 0 auto;"
+    :label="$t('Search categories')"
+    class="q-ma-md"
+   
   >
     <template #prepend>
       <q-icon name="search" />
