@@ -35,14 +35,13 @@ const { image, alt, backgroundColor } = defineProps({
   justify-content: center;
   align-items: center;
   padding: 16px;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  cursor: pointer;
+  border-radius: 20px!important;
+
 }
 
 .symbol-img {
   width: 100%;
   max-width: 500px;
-  border-radius: 16px;
+  border-radius: 20px;
 }
 </style>

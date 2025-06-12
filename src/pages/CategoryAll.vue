@@ -1,20 +1,14 @@
 <template>
-  <q-page class="q-pa-md bg-grey-2">
+  <q-page class="q-pa-md ">
     <TopHeader @toggle-drawer="toggleDrawer" />
 
     <CategorySearch v-model="search" />
 
     <div class="categories-list q-mt-lg">
-      
-      <q-card
-        v-for="category in filteredCategories"
-        :key="category.id"
-        clickable
-        @click="goToCategory(category.id)"
-        class="category-card q-pb-lg"
-        :style="{ backgroundColor: category.color ? category.color + '80' : '#fff' }"
-      >
-        <q-img :src="`/category_images/${category.image}`" style="height: 130px"  fit="contain"/>
+
+      <q-card v-for="category in filteredCategories" :key="category.id" clickable @click="goToCategory(category.id)">
+        <q-img class="category-card q-pb-lg" :src="`/category_images/${category.image}`" style="height: 130px"
+          fit="contain" :style="{ backgroundColor: category.color ? category.color + '80' : '#fff' }" />
         <div class="category-name ">
           {{ getTranslatedTitle(category).value }}
         </div>

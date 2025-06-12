@@ -26,26 +26,27 @@
 }
 
 .category-card {
-  position: relative;
+border-radius: 20px!important;
   cursor: pointer;
   transition: box-shadow 0.2s ease;
   overflow: hidden;
 }
 
-.category-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
 
+.q-card{
+  box-shadow: none;
+  background-color: transparent;
+}
 .category-name {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(255, 255, 255, 0.3);
-  color: #222;
-  padding: 8px 12px;
+  // position: absolute;
+  // bottom: 0;
+  // left: 0;
+  // right: 0;
+  // background: rgba(255, 255, 255, 0.3);
+  // color: #222;
+  padding: 8px 5px;
   font-weight: 600;
   font-size: 1rem;
-  backdrop-filter: blur(8px);
-  user-select: none;
+  // backdrop-filter: blur(8px);
+  // user-select: none;
 }

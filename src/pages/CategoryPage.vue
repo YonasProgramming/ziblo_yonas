@@ -1,38 +1,23 @@
 <template>
-  <q-page class="q-pa-md bg-grey-2">
+  <q-page class="q-pa-md ">
     <q-btn flat icon="arrow_back" @click="$router.push('/category-all')" class="q-mb-md q-pa-md" />
 
-    <div class="text-h5 q-mb-md" >
+    <div class="text-h5 q-mb-md">
       {{ categoryName }}
     </div>
-<q-input
-  standout="bg-primary text-white"
-  rounded
-  v-model="searchQuery"
-  :label="$t('Search symbols')"
-  class="q-mb-md"
-  clearable
-  debounce="300"
-  >
-    <template #prepend>
-      <q-icon name="search" />
-    </template>
-  </q-input>
+    <q-input bg-color="white"
+     standout="text-primary" rounded v-model="searchQuery" :label="$t('Search symbols')"
+      class="q-mb-md" clearable debounce="300">
+      <template #prepend>
+        <q-icon name="search" />
+      </template>
+    </q-input>
 
     <div class="pojam-list">
-      <q-card
-        v-for="pojam in pojmovi"
-        :key="pojam.id"
-        clickable
-        @click="goToPojam(pojam)"
-        class="pojam-card q-pb-xl"
-         :style="{ backgroundColor: pojam.category.color ? pojam.category.color + '80' : '#fff' }"
-      >
-        <q-img
-          :src="`/symbols/${pojam.image || 'default.svg'}`"
-          style="height: 130px"
-          fit="contain"
-        />
+      <q-card v-for="pojam in pojmovi" :key="pojam.id" clickable @click="goToPojam(pojam)">
+        <q-img :src="`/symbols/${pojam.image || 'default.svg'}`" style="height: 130px" fit="contain"
+          class="pojam-card q-pb-xl"
+          :style="{ backgroundColor: pojam.category.color ? pojam.category.color + '80' : '#fff' }" />
         <div class="pojam-name">
           {{ translatedTitle(pojam).value }}
         </div>
@@ -42,7 +27,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted,watch,computed   } from 'vue'
+import { ref, onMounted, watch, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import rawData from 'src/assets/symbols_data.json'
 import { useI18n } from 'vue-i18n'
@@ -102,7 +87,7 @@ function goToPojam(pojam) {
 
 .pojam-card {
   cursor: pointer;
-  border-radius: 12px;
+  border-radius: 20px !important;
   overflow: hidden;
   transition: box-shadow 0.2s ease;
   position: relative;
@@ -113,16 +98,20 @@ function goToPojam(pojam) {
 }
 
 .pojam-name {
-  position: absolute;
+  /* position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   background: rgba(255, 255, 255, 0.3);
-  color: #222;
-  padding: 8px 12px;
+  color: #222; */
+  padding: 5px 5px 10px 5px;
   font-weight: 600;
   font-size: 1.1rem;
-  backdrop-filter: blur(8px);
-  user-select: none;
+
+}
+
+.q-card {
+  box-shadow: none;
+  background-color: transparent;
 }
 </style>

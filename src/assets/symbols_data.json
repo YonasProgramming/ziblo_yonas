@@ -3552,7 +3552,7 @@
         "sound": "banana.mp3"
       },
       "es": {
-        "title": "el plátano / la banana",
+        "title": "el plátano",
         "sound": "banana_es.mp3"
       },
       "hr": {
@@ -3623,7 +3623,7 @@
   {
     "id": 72,
     "name": "grape",
-    "image": "grape.svg",
+    "image": "grapes.svg",
     "sound": "",
     "category": {
       "id": 3,
@@ -5000,7 +5000,7 @@
   {
     "id": 99,
     "name": "chicken",
-    "image": "chicken.svg",
+    "image": "chickenfood.svg",
     "sound": "",
     "category": {
       "id": 3,
@@ -5051,7 +5051,7 @@
   {
     "id": 100,
     "name": "fish",
-    "image": "fish.svg",
+    "image": "fishfood.svg",
     "sound": "fish.mp3",
     "category": {
       "id": 3,
@@ -20402,7 +20402,7 @@
   {
     "id": 401,
     "name": "study / learn",
-    "image": "study_/_learn.svg",
+    "image": "study.svg",
     "sound": "",
     "category": {
       "id": 12,
@@ -20429,8 +20429,8 @@
     },
     "translations": {
       "en": {
-        "title": "Study / Learn",
-        "sound": "study_/_learn.mp3"
+        "title": "Study",
+        "sound": "study.mp3"
       },
       "es": {
         "title": "Estudiar / Aprender",

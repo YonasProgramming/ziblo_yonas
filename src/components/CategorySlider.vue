@@ -51,19 +51,19 @@ function goToCategory(id) {
 
 .category-slide-item {
   flex: 0 0 auto;
-  width: 350px;
+  width: 260px;
   cursor: pointer;
   text-align: center;
   user-select: none;
 }
 
 .category-image {
-  width: 350px;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 15px;
+  width: 260px;
+  height: 260px;
+  object-fit: contain;
+  border-radius: 20px;
   margin-bottom: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
 }
 
 .category-name {

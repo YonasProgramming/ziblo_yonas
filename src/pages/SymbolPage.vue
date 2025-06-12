@@ -2,7 +2,7 @@
   <q-page class="q-pa-md">
     <q-btn flat icon="category" class="q-mb-md q-pa-md" @click="goBack" />
 <div v-if="symbol">
-  <div class="fit row wrap justify-between items-start content-start">
+  <div class="fit row no-wrap justify-between items-start content-start">
         <q-btn  icon="arrow_back" class="q-mb-md "  color="secondary" text-color="dark" @click="goPrev" size="lg"/>
          <q-btn  icon="shuffle" class="q-mb-md "  color="accent" text-color="dark" @click="goRandom" size="lg"/>
 <q-btn  icon="arrow_forward" class="q-mb-md" color="primary" text-color="dark" @click="goNext" size="lg"/>

@@ -2,10 +2,12 @@
   <q-input
     :model-value="modelValue"
     @update:model-value="updateValue"
-   standout="bg-primary text-white"
+  
    rounded
     clearable
     debounce="300"
+    bg-color="white"
+     standout="text-primary"
     :label="$t('Search categories')"
     class="q-ma-md"
    
